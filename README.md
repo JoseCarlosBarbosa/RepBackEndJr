@@ -1,4 +1,7 @@
-** Java Developer
+* Java Developer *
+
+
+
 O sistema deve conter ao menos dois usuários: Empresa e Cliente
 CPF (para Cliente) e CNPJ (para Empresa) devem ser validados
 Para cada Empresa, deve haver ao menos um tipo de taxa de sistema que será 
