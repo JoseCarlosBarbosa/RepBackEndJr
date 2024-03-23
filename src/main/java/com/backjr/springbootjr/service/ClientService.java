@@ -2,10 +2,12 @@ package com.backjr.springbootjr.service;
 
 
 import com.backjr.springbootjr.entity.Client;
-import com.backjr.springbootjr.exceptions.InvalidCnpjException;
+import com.backjr.springbootjr.entity.Operation;
 import com.backjr.springbootjr.exceptions.InvalidCpfException;
 import com.backjr.springbootjr.repository.ClientRepository;
+import com.backjr.springbootjr.repository.OperationRepository;
 import com.backjr.springbootjr.request.ClientRequest;
+import com.backjr.springbootjr.request.CreateClienteOperationRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Service;
 public class ClientService {
     @Autowired
     public ClientRepository clientRepository;
+    public OperationRepository operationRepository;
 
     public Client create(ClientRequest clientRequest) throws InvalidCpfException {
         Client client = new Client(clientRequest);
@@ -26,6 +29,15 @@ public class ClientService {
         Client clientCreated = clientRepository.save(client);
         return clientCreated;
     }
+
+
+    public Operation createOperation(CreateClienteOperationRequest createClienteOperationRequest, Long clienteId){
+        Operation operation = new Operation(createClienteOperationRequest, clienteId);
+        Operation operationCreated = operationRepository.save(operation);
+        return operationCreated;
+    }
+
+
 
     public static boolean validarCPF(String cpf) {
         // Remove caracteres não numéricos
