@@ -1,0 +1,7 @@
+package com.backjr.springbootjr.repository;
+
+import com.backjr.springbootjr.entity.Client;
+import org.springframework.data.repository.CrudRepository;
+
+public interface ClientRepository extends CrudRepository<Client, Long> {
+}
